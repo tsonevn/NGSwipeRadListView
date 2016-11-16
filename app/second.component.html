@@ -1,0 +1,25 @@
+<GridLayout rows="100 *" columns="">
+    <StackLayout row="0">
+            <Label text="Second component" class="title"></Label>
+            <Button text="GO TO FIRST" [nsRouterLink]="['/first']" class="link"></Button>
+        </StackLayout>
+        <RadListView row="1" id="listView" [items]="dataItems" pullToRefresh="true" itemSwipe="true" (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
+        loadOnDemandMode="Auto" selectionBehavior="None"
+            class="list-group">
+            <template tkListItemTemplate let-item="item">
+              <StackLayout orientation="vertical" class="list-group-item">
+                  <GridLayout columns="*,120" rows="auto,*" (tap)="goContactDetails(item)">
+                      <Label row="0" col="0" class="label  m-r-10" [text]="item.name"></Label>
+                      <Label row="1" col="0" class="label footnote  m-r-10" [text]="item.name"></Label>
+                      <Label row="0" col="1" rowSpan="2" class="numberLabel" [text]="item.description"></Label>
+                  </GridLayout>
+                  <StackLayout class="hr-light m-t-10"></StackLayout>
+              </StackLayout>
+            </template>
+            <GridLayout *tkListItemSwipeTemplate columns="*, auto" class="listItemSwipeGridLayout" (tap)="onRightSwipeClick($event)">
+                <StackLayout id="delete-view" class="deleteViewStackLayout" col="1" (tap)="onRightSwipeClick($event)">
+                    <Label text="delete" class="fa"></Label>
+                </StackLayout>
+            </GridLayout>
+        </RadListView>
+    </GridLayout>
