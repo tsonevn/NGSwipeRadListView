@@ -4,7 +4,7 @@
             <Button text="GO TO FIRST" [nsRouterLink]="['/first']" class="link"></Button>
         </StackLayout>
         <RadListView row="1" id="listView" [items]="dataItems" pullToRefresh="true" itemSwipe="true" (itemSwipeProgressStarted)="onSwipeCellStarted($event)"
-        loadOnDemandMode="Auto" selectionBehavior="None"
+        loadOnDemandMode="Auto" (itemSwipeProgressEnded)="onSwipeCellFinished($event)" selectionBehavior="None"
             class="list-group">
             <template tkListItemTemplate let-item="item">
               <StackLayout orientation="vertical" class="list-group-item">
